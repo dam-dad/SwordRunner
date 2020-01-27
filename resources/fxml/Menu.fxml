@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox fx:id="root2" prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+   <children>
+      <Button fx:id="comoJugarButton" mnemonicParsing="false" text="¿Cómo se juega?" />
+      <Button fx:id="jugarButton" mnemonicParsing="false" text="Jugar con amigos" />
+   </children>
+</VBox>
