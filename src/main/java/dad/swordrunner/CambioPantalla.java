@@ -1,4 +1,4 @@
-package jueguito;
+package dad.swordrunner;
 
 import java.io.IOException;
 

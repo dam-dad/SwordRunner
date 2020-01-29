@@ -1,4 +1,4 @@
-package jueguito;
+package dad.swordrunner;
 
 public class Main {
 	public static void main(String[] args) {
