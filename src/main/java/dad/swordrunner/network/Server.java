@@ -30,6 +30,7 @@ public class Server extends Task<Integer> {
 
 	@Override
 	protected Integer call() throws Exception {
+		System.out.println("server ok");
 		try {
 
 			// Inicio el servidor en el puerto
@@ -50,5 +51,11 @@ public class Server extends Task<Integer> {
 		}
 
 	}
+
+	public ClientModel getModel() {
+		return model;
+	}
+
+	
 
 }

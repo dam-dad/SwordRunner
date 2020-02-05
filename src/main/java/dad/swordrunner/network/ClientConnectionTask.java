@@ -27,6 +27,7 @@ public class ClientConnectionTask extends Task<Integer> {
 	
 	@Override
 	protected Integer call() throws Exception {
+		System.out.println("dvsdmbvsdzgfasdfjl");
 		final int MAX_INTENTOS = 5;
 		int intentos = 0;
 		model.setSocket(new Socket());
