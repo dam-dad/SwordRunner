@@ -4,10 +4,14 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import dad.swordrunner.ClientModel;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class networkTest {
+public class networkTest extends Application {
 
-	public static void main(String[] args){
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
 		ClientModel model = new ClientModel();
 		Server server;
 		Thread serverThread;
@@ -28,13 +32,18 @@ public class networkTest {
 
 		clientConnectionTask = new ClientConnectionTask(model);
 
+		System.out.println("asgsdafasdfasdfdasfasdf");
 		clientConnectionTask.setOnSucceeded(e -> startGame());
 		clientConnectionThread = new Thread(clientConnectionTask);
 
-		clientConnectionThread.start();
+		clientConnectionThread.start();		
+	}
+	public static void main(String[] args){
+		launch(args);
 	}
 
 	private static void startGame() {
 		System.out.println("jaja todo ok");
 	}
+
 }
