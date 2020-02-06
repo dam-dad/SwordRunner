@@ -25,7 +25,8 @@ public class ClientModel {
 	private DoubleProperty movSpeed = new SimpleDoubleProperty(this, "movSpeed", 1);
 	private DoubleProperty playerX = new SimpleDoubleProperty(this, "playerX");
 	private DoubleProperty playerY = new SimpleDoubleProperty(this, "playerY");
-
+	
+	
 	// Conectividad
 	private int port;
 	private String ip;
@@ -169,5 +170,7 @@ public class ClientModel {
 	public final void setConnectionState(final String connectionState) {
 		this.connectionStateProperty().set(connectionState);
 	}
+
+	
 
 }
