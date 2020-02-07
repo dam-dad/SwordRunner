@@ -57,6 +57,13 @@ public class LocalController {
 		
 		
 	}
+    
+    @FXML
+    void onListoAction(ActionEvent event) {
+
+    	
+    	
+    }
 
 	public VBox getView() {
 		return root;

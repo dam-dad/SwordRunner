@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class SwordRunnerApp extends Application{
 
 	private PortadaController controller;
-
+	public Scene scene;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -20,11 +20,14 @@ public class SwordRunnerApp extends Application{
 		
 		controller = new PortadaController();
 		
-		Scene scene = new Scene(controller.getView());
+		scene = new Scene(controller.getView());
+		
 		
 		primaryStage.setTitle("SwordRunner");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		
 		
 		
 	}

@@ -25,6 +25,6 @@
             <Insets bottom="20.0" />
          </padding>
       </HBox>
-      <Button fx:id="listoButton" mnemonicParsing="false" text="Listo" />
+      <Button fx:id="listoButton" mnemonicParsing="false" onAction="#onListoAction" text="Listo" />
    </children>
 </VBox>
