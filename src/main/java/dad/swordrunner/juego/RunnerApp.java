@@ -22,6 +22,8 @@ public class RunnerApp extends GameApplication {
     protected void initSettings(GameSettings settings) {
         settings.setWidth(1280);
         settings.setHeight(720);
+        settings.setFullScreenAllowed(true);
+        settings.setFullScreenFromStart(true);
     }
 
     private Entity player;
@@ -70,11 +72,17 @@ public class RunnerApp extends GameApplication {
     @Override
     protected void initGame() {
 
+        System.out.println("0");
+    	
         getGameWorld().addEntityFactory(new GameFactory());
 
         player = null;
         
+        System.out.println("1");
+        
         FXGL.setLevelFromMap("mapa.tmx");
+
+        System.out.println("2");
         
         //var levelFile = new File("mapa.tmx");
         //Level level;
@@ -86,9 +94,12 @@ public class RunnerApp extends GameApplication {
 //			e.printStackTrace();
 //		}
 
+        System.out.println("4");
 		
         player = getGameWorld().spawn("player", 0, 0);
 
+        System.out.println("5");
+        
         set("player", player);
     }
 
