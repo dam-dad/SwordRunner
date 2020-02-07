@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox fx:id="root" prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+   <children>
+      <HBox prefHeight="0.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="volverButton" mnemonicParsing="false" onAction="#onVolverAction" text="Volver" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="400.0" prefWidth="500.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <children>
+            <VBox alignment="TOP_CENTER" prefWidth="240.0" spacing="30.0">
+               <children>
+                  <Label fx:id="controlesLabel" alignment="CENTER" contentDisplay="CENTER" text="Controles" underline="true">
+                     <font>
+                        <Font name="Carlito Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="movimientoLabel" text="A,D --&gt; Mover">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="saltarLabel" text="W  --&gt; Saltar">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="agacharseLabel" alignment="CENTER" text="S  --&gt; Agacharse">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="correrLabel" text="J  --&gt; Correr">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pegarLabel" text="K  --&gt; Pegar">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="50.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="240.0" spacing="30.0">
+               <children>
+                  <Label fx:id="comoSeJuegaLabel" text="¿Cómo se juega?" underline="true">
+                     <font>
+                        <Font name="Carlito Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="instruccion1Label" text="Tu objetivo es llegar al otro lado del mapa." />
+                        <Label fx:id="instruccion2Label" text="Para ello, tendras que sobrepasar a tu rival" />
+                        <Label fx:id="instruccion3Label" text="De la manera que mas te guste:" />
+                        <Label fx:id="instruccion4Label" text="Saltandolo, matandolo,etc." />
+                        <Label fx:id="instruccion5Label" text="Como más te guste. Diviértete" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets top="50.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
