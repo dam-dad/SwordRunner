@@ -8,10 +8,13 @@ import com.almasb.fxgl.entity.level.Level;
 import com.almasb.fxgl.entity.level.tiled.TMXLevelLoader;
 import com.almasb.fxgl.input.UserAction;
 
+import dad.swordrunner.MenuController;
+import dad.swordrunner.PortadaController;
 import dad.swordrunner.juego.componentes.PlayerComponent;
 import javafx.scene.input.KeyCode;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Map;
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -71,18 +74,31 @@ public class RunnerApp extends GameApplication {
 
     @Override
     protected void initGame() {
-
-        System.out.println("0");
     	
-        getGameWorld().addEntityFactory(new GameFactory());
-
-        player = null;
-        
-        System.out.println("1");
-        
-        FXGL.setLevelFromMap("mapa.tmx");
-
-        System.out.println("2");
+    	PortadaController controller;
+		try {
+			controller = new PortadaController();
+			controller.getView().setPrefWidth(getGameScene().getWidth());
+			controller.getView().setPrefHeight(getGameScene().getHeight());
+	    	GameView view = new GameView(controller.getView(), 0);
+	    	getGameScene().addGameView(view);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+//        System.out.println("0");
+//    	
+//        getGameWorld().addEntityFactory(new GameFactory());
+//
+//        player = null;
+//        
+//        System.out.println("1");
+//        
+//        FXGL.setLevelFromMap("mapa.tmx");
+//
+//        System.out.println("2");
         
         //var levelFile = new File("mapa.tmx");
         //Level level;
@@ -94,13 +110,13 @@ public class RunnerApp extends GameApplication {
 //			e.printStackTrace();
 //		}
 
-        System.out.println("4");
-		
-        player = getGameWorld().spawn("player", 0, 0);
-
-        System.out.println("5");
-        
-        set("player", player);
+//        System.out.println("4");
+//		
+//        player = getGameWorld().spawn("player", 0, 0);
+//
+//        System.out.println("5");
+//        
+//        set("player", player);
     }
 
     @Override

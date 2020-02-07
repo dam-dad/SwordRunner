@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class PortadaController implements Initializable {
@@ -23,10 +24,7 @@ public class PortadaController implements Initializable {
 	// view	
 
 	@FXML
-	private VBox root;
-
-	@FXML
-	private VBox raiz;
+	private BorderPane root;
 
 	@FXML
 	private Button startButton;
@@ -70,7 +68,7 @@ public class PortadaController implements Initializable {
 		root.getChildren().setAll(comoJugarController.getView());
 	}
 
-	public VBox getView() {
+	public BorderPane getView() {
 		return root;
 	}
 	
