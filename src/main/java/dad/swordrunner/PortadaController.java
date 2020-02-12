@@ -11,7 +11,6 @@ import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 
 public class PortadaController implements Initializable {
 
@@ -22,6 +21,7 @@ public class PortadaController implements Initializable {
 	private ComoJugarController comoJugarController;
 	
 	// view	
+	
 
 	@FXML
 	private BorderPane root;
@@ -71,7 +71,6 @@ public class PortadaController implements Initializable {
 	public BorderPane getView() {
 		return root;
 	}
-	
 	
 
 

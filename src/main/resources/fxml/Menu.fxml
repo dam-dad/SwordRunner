@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root" alignment="CENTER" prefHeight="500.0" prefWidth="500.0" spacing="30.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="root" prefHeight="480.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="comoJugarButton" mnemonicParsing="false" onAction="#onComoJugarAction" prefHeight="50.0" prefWidth="150.0" text="¿Cómo se juega?" />
-      <Button fx:id="localButton" mnemonicParsing="false" onAction="#onLocalAction" prefHeight="50.0" prefWidth="150.0" text="Jugar en local" />
-      <Button fx:id="jugarButton" mnemonicParsing="false" onAction="#onJugarConAmigosAction" prefHeight="50.0" prefWidth="150.0" text="Jugar en linea" />
+      <VBox alignment="CENTER" prefHeight="480.0" prefWidth="770.0" spacing="30.0">
+         <children>
+            <Button fx:id="comoJugarButton" mnemonicParsing="false" onAction="#onComoJugarAction" prefHeight="50.0" prefWidth="150.0" text="¿Cómo se juega?" />
+            <Button fx:id="localButton" mnemonicParsing="false" onAction="#onLocalAction" prefHeight="50.0" prefWidth="150.0" text="Jugar en local" />
+            <Button fx:id="jugarButton" mnemonicParsing="false" onAction="#onJugarConAmigosAction" prefHeight="50.0" prefWidth="150.0" text="Jugar en linea" />
+         </children>
+      </VBox>
    </children>
-</VBox>
+</Pane>

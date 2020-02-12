@@ -8,9 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
 
 public class LocalController {
+	
+	SwordRunnerApp swordRunner;
 	
 	//controllers
 	
@@ -18,7 +20,7 @@ public class LocalController {
 	
 	//view
 	@FXML
-    private VBox root;
+    private Pane root;
 
     @FXML
     private Button volverButton;
@@ -60,12 +62,14 @@ public class LocalController {
     
     @FXML
     void onListoAction(ActionEvent event) {
-
+//    	boolean buton= true;
+//    	RunnerApp.botonPulsado(buton);
+    	swordRunner.getPrimaryStage().close();
     	
     	
     }
 
-	public VBox getView() {
+	public Pane getView() {
 		return root;
 	}
 }

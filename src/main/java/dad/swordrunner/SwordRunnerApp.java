@@ -8,6 +8,7 @@ public class SwordRunnerApp extends Application{
 
 	private PortadaController controller;
 	public Scene scene;
+	private static Stage primaryStage;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -18,9 +19,11 @@ public class SwordRunnerApp extends Application{
 //		primaryStage.setScene(scene);
 //		primaryStage.show();
 		
+		SwordRunnerApp.primaryStage = primaryStage;
+		
 		controller = new PortadaController();
 		
-		scene = new Scene(controller.getView());
+		scene = new Scene(controller.getView(), 1280, 720);
 		
 		
 		primaryStage.setTitle("SwordRunner");
@@ -31,6 +34,11 @@ public class SwordRunnerApp extends Application{
 		
 		
 	}
+	
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

@@ -7,7 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
+
 
 public class ComoJugarController {
 	//Controllers
@@ -15,7 +16,7 @@ public class ComoJugarController {
 	
 	//view
 	@FXML
-    private VBox root;
+    private Pane root;
 
     @FXML
     private Button volverButton;
@@ -68,7 +69,7 @@ public class ComoJugarController {
     void onVolverAction(ActionEvent event) {
     	portadaController.irAMenu();
     }
-    public VBox getView() {
+    public Pane getView() {
 		return root;
 	}
 }
