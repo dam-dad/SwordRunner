@@ -43,13 +43,17 @@ public class Server extends Task<Integer> {
 			Socket skCliente = skServidor.accept();
 
 			System.out.println("Cliente conectado");
-			return 0;
-
+		
+			while(ClientGameThread.getInGame()) {
+				System.out.println(model.getFlujoEntrada().read());
+			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 1;
 		}
-
+		return 0;
 	}
 
 	public ClientModel getModel() {

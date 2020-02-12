@@ -1,11 +1,13 @@
 package dad.swordrunner.network;
 
+import java.io.IOException;
+
 import dad.swordrunner.ClientModel;
 
 public class ClientGameThread extends Thread {
 
 	ClientModel model;
-	Boolean inGame;
+	static Boolean inGame=true;
 	public ClientGameThread(ClientModel model) {
 		this.model = model;
 	}
@@ -21,9 +23,9 @@ public class ClientGameThread extends Thread {
 
 		while (inGame) {
 			try {
-				//if (model.isPlayerAlive())
-//					sendPlayerPosition();
-//				desempaquetarPosiciones(model.getScanner().nextLine());
+
+				sendLocalPlayerData();
+				unpackData(model.getScanner().nextLine());
 				indexError = 0;
 			} catch (Exception e) {
 				indexError++;
@@ -41,6 +43,20 @@ public class ClientGameThread extends Thread {
 
 		// Sale del bucle por lo que termina la partida
 
+	}
+	
+	public static Boolean getInGame() {
+		return inGame;
+	}
+
+	private void unpackData(String playerData) {
+		
+		
+	}
+	
+	
+	private void sendLocalPlayerData() throws IOException {
+		model.getFlujoSalida().write(model.getInputArray().toString());
 	}
 
 	
