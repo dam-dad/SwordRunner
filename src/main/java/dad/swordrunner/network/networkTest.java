@@ -17,6 +17,7 @@ public class networkTest extends Application {
 		Thread serverThread;
 		ClientConnectionTask clientConnectionTask;
 		Thread clientConnectionThread;
+		ClientGameThread gamethread=new ClientGameThread(model);
 		
 		model.setPort(2000);
 		try {
@@ -25,12 +26,12 @@ public class networkTest extends Application {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-
+		gamethread.start();
 		server = new Server(model);
 		serverThread = new Thread(server);
 		serverThread.start();
-
 		clientConnectionTask = new ClientConnectionTask(model);
+	
 
 		System.out.println("asgsdafasdfasdfdasfasdf");
 		clientConnectionTask.setOnSucceeded(e -> startGame());

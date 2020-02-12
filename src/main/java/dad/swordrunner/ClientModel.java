@@ -6,8 +6,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,10 +25,25 @@ public class ClientModel {
 
 	private IntegerProperty health = new SimpleIntegerProperty(this, "health", 3);
 	private DoubleProperty movSpeed = new SimpleDoubleProperty(this, "movSpeed", 1);
-	private DoubleProperty playerX = new SimpleDoubleProperty(this, "playerX");
-	private DoubleProperty playerY = new SimpleDoubleProperty(this, "playerY");
+	private BooleanProperty w=new SimpleBooleanProperty(this, "w key");
+	private BooleanProperty a=new SimpleBooleanProperty(this, "a key");
+	private BooleanProperty s=new SimpleBooleanProperty(this, "s key");
+	private BooleanProperty d=new SimpleBooleanProperty(this, "d key");
+	private BooleanProperty space=new SimpleBooleanProperty(this, "space key");
+	private BooleanProperty k=new SimpleBooleanProperty(this, "k key");
 	
 	
+	
+
+	
+	
+	
+	public boolean[] getInputArray() {
+		boolean[] inputBoolean=new boolean[] {isA(),isW(),isS(),isD(),isSpace(),isK()};
+		return inputBoolean;
+	}
+
+
 	// Conectividad
 	private int port;
 	private String ip;
@@ -135,30 +152,6 @@ public class ClientModel {
 		this.movSpeedProperty().set(movSpeed);
 	}
 
-	public final DoubleProperty playerXProperty() {
-		return this.playerX;
-	}
-
-	public final double getPlayerX() {
-		return this.playerXProperty().get();
-	}
-
-	public final void setPlayerX(final double playerX) {
-		this.playerXProperty().set(playerX);
-	}
-
-	public final DoubleProperty playerYProperty() {
-		return this.playerY;
-	}
-
-	public final double getPlayerY() {
-		return this.playerYProperty().get();
-	}
-
-	public final void setPlayerY(final double playerY) {
-		this.playerYProperty().set(playerY);
-	}
-
 	public final StringProperty connectionStateProperty() {
 		return this.connectionState;
 	}
@@ -170,6 +163,96 @@ public class ClientModel {
 	public final void setConnectionState(final String connectionState) {
 		this.connectionStateProperty().set(connectionState);
 	}
+
+	public final BooleanProperty wProperty() {
+		return this.w;
+	}
+	
+
+	public final boolean isW() {
+		return this.wProperty().get();
+	}
+	
+
+	public final void setW(final boolean w) {
+		this.wProperty().set(w);
+	}
+	
+
+	public final BooleanProperty aProperty() {
+		return this.a;
+	}
+	
+
+	public final boolean isA() {
+		return this.aProperty().get();
+	}
+	
+
+	public final void setA(final boolean a) {
+		this.aProperty().set(a);
+	}
+	
+
+	public final BooleanProperty sProperty() {
+		return this.s;
+	}
+	
+
+	public final boolean isS() {
+		return this.sProperty().get();
+	}
+	
+
+	public final void setS(final boolean s) {
+		this.sProperty().set(s);
+	}
+	
+
+	public final BooleanProperty dProperty() {
+		return this.d;
+	}
+	
+
+	public final boolean isD() {
+		return this.dProperty().get();
+	}
+	
+
+	public final void setD(final boolean d) {
+		this.dProperty().set(d);
+	}
+	
+
+	public final BooleanProperty spaceProperty() {
+		return this.space;
+	}
+	
+
+	public final boolean isSpace() {
+		return this.spaceProperty().get();
+	}
+	
+
+	public final void setSpace(final boolean space) {
+		this.spaceProperty().set(space);
+	}
+	
+
+	public final BooleanProperty kProperty() {
+		return this.k;
+	}
+	
+
+	public final boolean isK() {
+		return this.kProperty().get();
+	}
+	
+
+	public final void setK(final boolean k) {
+		this.kProperty().set(k);
+	}
+	
 
 	
 
