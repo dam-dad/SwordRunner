@@ -1,93 +1,127 @@
 package dad.swordrunner.juego;
 
-
 import com.almasb.fxgl.app.*;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.level.Level;
-import com.almasb.fxgl.entity.level.tiled.TMXLevelLoader;
 import com.almasb.fxgl.input.UserAction;
 
+import dad.swordrunner.ComoJugarController;
+import dad.swordrunner.LocalController;
 import dad.swordrunner.MenuController;
+import dad.swordrunner.OnlineController;
 import dad.swordrunner.PortadaController;
 import dad.swordrunner.juego.componentes.PlayerComponent;
 import javafx.scene.input.KeyCode;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Map;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class RunnerApp extends GameApplication {
 
-    @Override
-    protected void initSettings(GameSettings settings) {
-        settings.setWidth(1280);
-        settings.setHeight(720);
-        settings.setFullScreenAllowed(true);
-        settings.setFullScreenFromStart(true);
-    }
+	@Override
+	protected void initSettings(GameSettings settings) {
+		settings.setFullScreenAllowed(true);
+		settings.setFullScreenFromStart(true);
+	}
 
-    private Entity player;
+	private Entity player;
+	private static boolean iniciar;
 
-    @Override
-    protected void initInput() {
-        getInput().addAction(new UserAction("Left") {
-            @Override
-            protected void onAction() {
-                player.getComponent(PlayerComponent.class).left();
-            }
+	@Override
+	protected void initInput() {
+		getInput().addAction(new UserAction("Left") {
+			@Override
+			protected void onAction() {
+				player.getComponent(PlayerComponent.class).left();
+			}
 
-            @Override
-            protected void onActionEnd() {
-                player.getComponent(PlayerComponent.class).stop();
-            }
-        }, KeyCode.A);
+			@Override
+			protected void onActionEnd() {
+				player.getComponent(PlayerComponent.class).stop();
+			}
+		}, KeyCode.A);
 
-        getInput().addAction(new UserAction("Right") {
-            @Override
-            protected void onAction() {
-                player.getComponent(PlayerComponent.class).right();
-            }
+		getInput().addAction(new UserAction("Right") {
+			@Override
+			protected void onAction() {
+				player.getComponent(PlayerComponent.class).right();
+			}
 
-            @Override
-            protected void onActionEnd() {
-                player.getComponent(PlayerComponent.class).stop();
-            }
-        }, KeyCode.D);
+			@Override
+			protected void onActionEnd() {
+				player.getComponent(PlayerComponent.class).stop();
+			}
+		}, KeyCode.D);
 
-        getInput().addAction(new UserAction("Jump") {
-            @Override
-            protected void onActionBegin() {
-                player.getComponent(PlayerComponent.class).jump();
-            }
-        }, KeyCode.W);
-    }
+		getInput().addAction(new UserAction("Jump") {
+			@Override
+			protected void onActionBegin() {
+				player.getComponent(PlayerComponent.class).jump();
+			}
+		}, KeyCode.W);
+	}
 
+	@Override
+	protected void initGameVars(Map<String, Object> vars) {
 
-    @Override
-    protected void initGameVars(Map<String, Object> vars) {
+	}
 
-    	
-    }
+	@Override
+	protected void initGame() {
 
-    @Override
-    protected void initGame() {
-    	
-    	PortadaController controller;
+		PortadaController controller;
+		ComoJugarController comoController;
+		LocalController localController;
+		OnlineController onlineController;
+		MenuController menuController;
 		try {
 			controller = new PortadaController();
-			controller.getView().setPrefWidth(getGameScene().getWidth());
-			controller.getView().setPrefHeight(getGameScene().getHeight());
-	    	GameView view = new GameView(controller.getView(), 0);
-	    	getGameScene().addGameView(view);
+			controller.getView().setPrefWidth(770);
+			controller.getView().setPrefHeight(480);
+			controller.getView().setCenterShape(true);
+			GameView view = new GameView(controller.getView(), 0);
+			getGameScene().addGameView(view);
+			
+			menuController = new MenuController(controller);
+			menuController.getView().setPrefWidth(770);
+			menuController.getView().setPrefHeight(480);
+			menuController.getView().setCenterShape(true);
+			
+			comoController = new ComoJugarController(controller);
+			comoController.getView().setPrefWidth(770);
+			comoController.getView().setPrefHeight(480);
+			comoController.getView().setCenterShape(true);
+			
+			localController = new LocalController(controller);
+			localController.getView().setPrefWidth(750);
+			localController.getView().setPrefHeight(480);
+			localController.getView().setCenterShape(true);
+			
+			onlineController = new OnlineController(controller);
+			onlineController.getView().setPrefWidth(750);
+			onlineController.getView().setPrefHeight(480);
+			onlineController.getView().setCenterShape(true);
+			
+			
+			
+
+			if (iniciar == true) { 
+				getGameWorld().addEntityFactory(new GameFactory());
+
+				player = null;
+
+				FXGL.setLevelFromMap("mapa.tmx");
+				
+				player = getGameWorld().spawn("player", 0, 0);
+				
+				set("player", player);
+			}
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
-    	
+
 //        System.out.println("0");
 //    	
 //        getGameWorld().addEntityFactory(new GameFactory());
@@ -99,9 +133,9 @@ public class RunnerApp extends GameApplication {
 //        FXGL.setLevelFromMap("mapa.tmx");
 //
 //        System.out.println("2");
-        
-        //var levelFile = new File("mapa.tmx");
-        //Level level;
+
+		// var levelFile = new File("mapa.tmx");
+		// Level level;
 //		try {
 //			level = new TMXLevelLoader().load(levelFile.toURI().toURL(), getGameWorld());
 //			FXGL.getGameWorld().setLevel(level);
@@ -117,15 +151,18 @@ public class RunnerApp extends GameApplication {
 //        System.out.println("5");
 //        
 //        set("player", player);
-    }
+	}
 
-    @Override
-    protected void initPhysics() {
-        getPhysicsWorld().setGravity(0, 760);
-    }
- 
+	public static void botonPulsado(boolean b) {
+		iniciar = b;
+	}
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+	@Override
+	protected void initPhysics() {
+		getPhysicsWorld().setGravity(0, 760);
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
 }

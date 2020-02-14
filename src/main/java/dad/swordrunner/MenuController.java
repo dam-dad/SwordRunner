@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class MenuController {
@@ -16,7 +18,7 @@ public class MenuController {
 	// view
 
 	@FXML
-	private VBox root;
+	private Pane root;
 
 	@FXML
 	private Button comoJugarButton;
@@ -47,7 +49,7 @@ public class MenuController {
     	portadaController.irALocal();
     }
 
-	public VBox getView() {
+	public Pane getView() {
 		return root;
 	}
 

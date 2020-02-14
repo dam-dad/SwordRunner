@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class OnlineController {
@@ -24,7 +25,7 @@ public class OnlineController {
 	// view
 
 	@FXML
-	private VBox root;
+	private Pane root;
 
 	@FXML
 	private VBox componentes;
@@ -111,7 +112,7 @@ public class OnlineController {
 		loader.load();
 	}
 
-	public VBox getView() {
+	public Pane getView() {
 		return root;
 	}
 }
