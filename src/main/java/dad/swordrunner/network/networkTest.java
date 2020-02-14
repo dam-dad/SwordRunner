@@ -26,18 +26,19 @@ public class networkTest extends Application {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		gamethread.start();
 		server = new Server(model);
 		serverThread = new Thread(server);
-		serverThread.start();
 		clientConnectionTask = new ClientConnectionTask(model);
-	
-
 		System.out.println("asgsdafasdfasdfdasfasdf");
 		clientConnectionTask.setOnSucceeded(e -> startGame());
 		clientConnectionThread = new Thread(clientConnectionTask);
 
-		clientConnectionThread.start();		
+		serverThread.start();
+		clientConnectionThread.start();	
+		gamethread.start();
+
+
+			
 	}
 	public static void main(String[] args){
 		launch(args);

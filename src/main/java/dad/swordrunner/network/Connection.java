@@ -5,11 +5,13 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.concurrent.CyclicBarrier;
 
 public class Connection extends Thread {
 
 	private Socket sk;
 	
+	static CyclicBarrier barrera = new CyclicBarrier(3);
 	
 	private String skin;
 	private String itemStateString;

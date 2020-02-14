@@ -49,8 +49,9 @@ public class ClientConnectionTask extends Task<Integer> {
 			}
 		}
 
+		
 		model.setConnectionState("Servidor encontrado, esperando jugadores");
-
+		
 		// Establecer los flujos
 
 		model.setFlujoEntrada(new InputStreamReader(model.getSocket().getInputStream(), "UTF-8"));

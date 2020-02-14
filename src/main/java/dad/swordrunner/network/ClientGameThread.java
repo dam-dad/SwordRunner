@@ -26,8 +26,11 @@ public class ClientGameThread extends Thread {
 
 				sendLocalPlayerData();
 				unpackData(model.getScanner().nextLine());
+				
 				indexError = 0;
+			
 			} catch (Exception e) {
+				e.printStackTrace();
 				indexError++;
 				if (indexError == 5) {
 
@@ -56,6 +59,8 @@ public class ClientGameThread extends Thread {
 	
 	
 	private void sendLocalPlayerData() throws IOException {
+		System.err.println(model.getFlujoSalida());
+		System.out.println(model.getInputArray());
 		model.getFlujoSalida().write(model.getInputArray().toString());
 	}
 
