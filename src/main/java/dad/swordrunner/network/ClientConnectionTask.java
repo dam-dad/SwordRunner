@@ -54,27 +54,20 @@ public class ClientConnectionTask extends Task<Integer> {
 		
 		// Establecer los flujos
 
-		model.setFlujoEntrada(new InputStreamReader(model.getSocket().getInputStream(), "UTF-8"));
-
-		model.setFlujoSalida(new OutputStreamWriter(model.getSocket().getOutputStream(), "UTF-8"));
-
-		model.getFlujoSalida().write(model.isHost()+","+model.getSkin() + "\n");
-
-		model.getFlujoSalida().flush();
-
 
 
 		model.setScanner(new Scanner(model.getFlujoEntrada()));
 
-		model.getFlujoSalida().write("ready\n");
-		model.getFlujoSalida().flush();
+
 
 		model.setConnectionState("Esperando señal de inicio desde el servidor...");
 		
-		System.out.println(model.getScanner().nextLine());
+		Server.getBarrera().await();
 		
-		
+		Server.getBarrera().await();
 		model.setConnectionState("Empezando la partida...");
+		
+		
 
 		return 0;
 	}

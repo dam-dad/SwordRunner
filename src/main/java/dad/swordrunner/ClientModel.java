@@ -38,8 +38,8 @@ public class ClientModel {
 	
 	
 	
-	public boolean[] getInputArray() {
-		boolean[] inputBoolean=new boolean[] {isA(),isW(),isS(),isD(),isSpace(),isK()};
+	public String[] getInputArray() {
+		String[] inputBoolean=new String[] {isA(),isW(),isS(),isD(),isSpace(),isK()};
 		return inputBoolean;
 	}
 
@@ -169,8 +169,8 @@ public class ClientModel {
 	}
 	
 
-	public final boolean isW() {
-		return this.wProperty().get();
+	public final String isW() {
+		return String.valueOf(this.wProperty().get());
 	}
 	
 
@@ -184,8 +184,8 @@ public class ClientModel {
 	}
 	
 
-	public final boolean isA() {
-		return this.aProperty().get();
+	public final String isA() {
+		return  String.valueOf(this.aProperty().get());
 	}
 	
 
@@ -199,8 +199,8 @@ public class ClientModel {
 	}
 	
 
-	public final boolean isS() {
-		return this.sProperty().get();
+	public final String isS() {
+		return  String.valueOf(this.sProperty().get());
 	}
 	
 
@@ -214,8 +214,8 @@ public class ClientModel {
 	}
 	
 
-	public final boolean isD() {
-		return this.dProperty().get();
+	public final String isD() {
+		return  String.valueOf(this.dProperty().get());
 	}
 	
 
@@ -229,8 +229,8 @@ public class ClientModel {
 	}
 	
 
-	public final boolean isSpace() {
-		return this.spaceProperty().get();
+	public final String isSpace() {
+		return  String.valueOf(this.spaceProperty().get());
 	}
 	
 
@@ -244,8 +244,8 @@ public class ClientModel {
 	}
 	
 
-	public final boolean isK() {
-		return this.kProperty().get();
+	public final String isK() {
+		return  String.valueOf(this.kProperty().get());
 	}
 	
 

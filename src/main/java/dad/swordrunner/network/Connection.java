@@ -18,6 +18,10 @@ public class Connection extends Thread {
 
 	Scanner entrada;
 	OutputStreamWriter salida;
+	
+	public Connection() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Connection(Socket sk) throws IOException {
 		this.sk = sk;
