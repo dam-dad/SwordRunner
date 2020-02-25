@@ -28,8 +28,8 @@ public class PlayerComponent extends Component {
         Image image1 = image("quieto.png");
         Image image2 = image("correr.png");
 
-        animIdle = new AnimationChannel(image1, 1, 22, 45, Duration.seconds(1), 0, 0);
-        animWalk = new AnimationChannel(image2, 8, 352/8, 38, Duration.seconds(1), 0, 7);
+        animIdle = new AnimationChannel(image1, 1, 43, 79, Duration.seconds(1), 0, 0);
+        animWalk = new AnimationChannel(image2, 8, 730/8, 76, Duration.seconds(0.6), 0, 7);
 
         texture = new AnimatedTexture(animIdle);
         texture.loop();
@@ -69,7 +69,7 @@ public class PlayerComponent extends Component {
             return;
 
         getEntity().setScaleX(-1);
-        physics.setVelocityX(-170);
+        physics.setVelocityX(-220);
     }
 
     public void right() {
@@ -77,7 +77,7 @@ public class PlayerComponent extends Component {
             return;
 
         getEntity().setScaleX(1);
-        physics.setVelocityX(170);
+        physics.setVelocityX(220);
     }
 
     public void stop() {
@@ -95,7 +95,7 @@ public class PlayerComponent extends Component {
             return;
 
 
-        physics.setVelocityY(-300);
+        physics.setVelocityY(-350);
 
         jumps--;
     }

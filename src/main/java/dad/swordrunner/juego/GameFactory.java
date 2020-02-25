@@ -51,4 +51,44 @@ public class GameFactory implements EntityFactory {
                 .with(new PlayerComponent())
                 .build();
     }
+    
+    @Spawns("exitTrigger")
+    public Entity newExitTrigger(SpawnData data) {
+        return entityBuilder()
+                .type(GameType.EXIT_TRIGGER)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+    
+    @Spawns("exitSign")
+    public Entity newExit(SpawnData data) {
+        return entityBuilder()
+                .type(GameType.EXIT_SIGN)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+    
+    @Spawns("doorTop")
+    public Entity newDoorTop(SpawnData data) {
+        return entityBuilder()
+                .type(GameType.DOOR_TOP)
+                .from(data)
+                .opacity(0)
+                .build();
+    }
+
+    @Spawns("doorBot")
+    public Entity newDoorBot(SpawnData data) {
+        return entityBuilder()
+                .type(GameType.DOOR_BOT)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .opacity(0)
+                .with(new CollidableComponent(false))
+                .build();
+    }
 }
