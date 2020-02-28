@@ -3,28 +3,31 @@ package dad.swordrunner.network;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+
 
 public class Connection extends Thread {
 
 	private Socket sk;
-	
-	static CyclicBarrier barrera = new CyclicBarrier(3);
-	
-	private String skin;
+
+	private int identity;
 	private String itemStateString;
+
+	private String nombreSkin;
+	private String nombre, skin;
+	static CyclicBarrier barrera = new CyclicBarrier(Server.getnPlayers() + 1);
+
 
 	Scanner entrada;
 	OutputStreamWriter salida;
-	
-	public Connection() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public Connection(Socket sk) throws IOException {
+	public Connection(Socket sk, int id, ArrayList<Connection> connectionsArray) throws IOException {
 		this.sk = sk;
+		this.identity = id;
 
 		entrada = new Scanner(this.sk.getInputStream(), "UTF8");
 		salida = new OutputStreamWriter(this.sk.getOutputStream(), "UTF8");
@@ -35,13 +38,18 @@ public class Connection extends Thread {
 	public void run() {
 		super.run();
 		boolean aux = false;
+		nombreSkin = entrada.nextLine().toString();
 
-		skin = entrada.nextLine().toString().split(",")[1];
+		
 
-		System.out.println("Cliente con skin " + skin);
+		System.out.println( " skin: " + nombreSkin + "\n");
 
 		try {
+			barrera.await();
+			salida.write(identity);
+			salida.flush();
 
+			barrera.await();
 			do {
 				try {
 					aux = false;
@@ -51,38 +59,72 @@ public class Connection extends Thread {
 					aux = true;
 				}
 			} while (aux);
+			salida.write("ready\n");
+			salida.flush();
+
+			System.out.println(Server.getPlayers().toString());
+			salida.write(Server.getPlayers().toString() + "\n");
+			salida.flush();
 
 			salida.write("start\n");
 			salida.flush();
 
+			barrera.await();
+
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (BrokenBarrierException e) {
 			e.printStackTrace();
 		}
 
 	}
 
 	public void send(String str) throws IOException {
-		salida.write(str);
-		salida.flush();
-
+			salida.write(str);
+			salida.flush();
+		
 	}
 
 	public void recive() {
 
-		itemStateString = entrada.nextLine();
+		System.out.println(1);
 
+	
+		itemStateString = entrada.nextLine()+ "_";
+		System.out.println(1);
 	}
 
+
+	
+	
 	public Socket getSocket() {
 		return sk;
+	}
+
+	public String getNombre() {
+		return nombre;
 	}
 
 	public String getSkin() {
 		return skin;
 	}
 
+	public int getIdentity() {
+		return identity;
+	}
+
 	public String getItemStateString() {
 		return itemStateString;
 	}
+	public String disconnect() {		
+		
+		return  identity + ",dc";
+		
+		
+		
+	}
+
 
 }

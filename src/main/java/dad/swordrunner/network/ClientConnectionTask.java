@@ -17,17 +17,8 @@ public class ClientConnectionTask extends Task<Integer> {
 		this.model = model;
 	}
 
-	
-	
-	/**
-	 * Establece la conexión con el servidor con un máximo de 5 intentos
-	 * 
-	 */
-	
-	
 	@Override
 	protected Integer call() throws Exception {
-		System.out.println("dvsdmbvsdzgfasdfjl");
 		final int MAX_INTENTOS = 5;
 		int intentos = 0;
 		model.setSocket(new Socket());
@@ -49,25 +40,35 @@ public class ClientConnectionTask extends Task<Integer> {
 			}
 		}
 
-		
 		model.setConnectionState("Servidor encontrado, esperando jugadores");
-		
+
 		// Establecer los flujos
 
+		model.setFlujoEntrada(new InputStreamReader(model.getSocket().getInputStream(), "UTF-8"));
 
+		model.setFlujoSalida(new OutputStreamWriter(model.getSocket().getOutputStream(), "UTF-8"));
+
+		model.getFlujoSalida().write(model.getSkin() + "\n");
+
+		model.getFlujoSalida().flush();
+
+
+		model.getFlujoEntrada().read();
 
 		model.setScanner(new Scanner(model.getFlujoEntrada()));
 
-
+		model.getFlujoSalida().write("ready\n");
+		model.getFlujoSalida().flush();
 
 		model.setConnectionState("Esperando señal de inicio desde el servidor...");
 		
-		Server.getBarrera().await();
+		System.out.println(model.getScanner().nextLine());
+
+		model.getScanner().nextLine();
 		
-		Server.getBarrera().await();
+		
+		
 		model.setConnectionState("Empezando la partida...");
-		
-		
 
 		return 0;
 	}

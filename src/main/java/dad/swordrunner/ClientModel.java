@@ -45,6 +45,16 @@ public class ClientModel {
 
 
 	// Conectividad
+	private boolean enPartida;
+	public boolean isEnPartida() {
+		return enPartida;
+	}
+
+	public void setEnPartida(boolean enPartida) {
+		this.enPartida = enPartida;
+	}
+
+
 	private int port;
 	private String ip;
 	private Socket socket;
