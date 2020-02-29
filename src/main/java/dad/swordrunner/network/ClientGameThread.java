@@ -1,7 +1,5 @@
 package dad.swordrunner.network;
 
-import java.io.IOException;
-
 import dad.swordrunner.ClientModel;
 
 public class ClientGameThread extends Thread {
@@ -20,11 +18,14 @@ public class ClientGameThread extends Thread {
 		System.out.println("Esperando start para sincronizar");
 		System.out.println(model.getScanner().nextLine());
 		model.setEnPartida(true);
+		System.out.println(model.getConnectionState());
+		
 
 		while (model.isEnPartida()) {
 			try {
-				//if (model.isPlayerAlive())
-					sendPlayerPosition();
+
+				sendPlayerPosition();
+				
 				System.out.println(desempaquetarPosiciones(model.getScanner().nextLine()));
 				indexError = 0;
 			} catch (Exception e) {
@@ -32,6 +33,7 @@ public class ClientGameThread extends Thread {
 				if (indexError == 5) {
 
 					model.setEnPartida(false);
+					System.out.println("esto no va");
 				}
 			}
 
@@ -44,8 +46,6 @@ public class ClientGameThread extends Thread {
 		// Sale del bucle por lo que termina la partida
 
 	}
-
-	
 
 	public String desempaquetarPosiciones(String paquete) {
 		return paquete;
@@ -60,9 +60,10 @@ public class ClientGameThread extends Thread {
 			aux += model.getInputArray()[i] + ",";
 		}
 		aux += model.getInputArray()[i];
+		System.out.println(aux + "\n");
 		model.getFlujoSalida().write(aux);
 		model.getFlujoSalida().flush();
-		System.out.println(2);
+
 	}
 
 }

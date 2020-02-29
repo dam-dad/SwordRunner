@@ -21,6 +21,12 @@ public class OnlineController {
 	// controllers
 
 	private PortadaController portadaController;
+	private ClientModel model;
+	
+	//bindeos
+	
+	
+	
 
 	// view
 
@@ -70,6 +76,10 @@ public class OnlineController {
 		
 		Matcher mather = patron.matcher(ipDatos.get());
 		
+		model.setIp(ipDatos.toString());
+		model.setPort(Integer.parseInt(puertoDatos.toString()));
+		model.setName(nickDatos.toString());
+		
 		
 		if (ipDatos.get().isEmpty() | puertoDatos.get().isEmpty()) {
 			Alert alertaOnline = new Alert(AlertType.ERROR);
@@ -103,6 +113,10 @@ public class OnlineController {
 			}
 		}
 	}
+	
+
+	
+	
 
 	public OnlineController(PortadaController portadaController) throws IOException {
 		this.portadaController = portadaController;

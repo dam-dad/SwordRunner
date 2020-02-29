@@ -19,7 +19,7 @@ public class ClientModel {
 
 	private boolean host;
 
-	private String skin;
+	
 
 	// gameplay
 
@@ -57,9 +57,20 @@ public class ClientModel {
 
 	private int port;
 	private String ip;
+	private String skin;
 	private Socket socket;
 	private Scanner scanner;
 	private ServerSocket serverSocket;
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 
 	private StringProperty connectionState = new SimpleStringProperty(this, "connection State", "");
 

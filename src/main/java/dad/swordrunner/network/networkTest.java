@@ -23,9 +23,12 @@ public class networkTest extends Application {
 		
 
 		model.setPort(2000);
+		model2.setPort(2000);
 		try {
 
 			model.setIp(InetAddress.getLocalHost().getHostAddress());
+			model2.setIp(InetAddress.getLocalHost().getHostAddress());
+
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}

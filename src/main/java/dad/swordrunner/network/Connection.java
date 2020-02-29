@@ -19,7 +19,7 @@ public class Connection extends Thread {
 
 	private String nombreSkin;
 	private String nombre, skin;
-	static CyclicBarrier barrera = new CyclicBarrier(Server.getnPlayers() + 1);
+	static CyclicBarrier barrera = new CyclicBarrier(3);
 
 
 	Scanner entrada;
@@ -66,8 +66,15 @@ public class Connection extends Thread {
 			salida.write(Server.getPlayers().toString() + "\n");
 			salida.flush();
 
-			salida.write("start\n");
-			salida.flush();
+			try {
+				salida.write("start\n");
+				salida.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 
 			barrera.await();
 
@@ -89,11 +96,8 @@ public class Connection extends Thread {
 
 	public void recive() {
 
-		System.out.println(1);
-
+		itemStateString = entrada.nextLine().toString()+ "_";
 	
-		itemStateString = entrada.nextLine()+ "_";
-		System.out.println(1);
 	}
 
 
@@ -118,13 +122,8 @@ public class Connection extends Thread {
 	public String getItemStateString() {
 		return itemStateString;
 	}
-	public String disconnect() {		
-		
-		return  identity + ",dc";
-		
-		
-		
-	}
+	
+
 
 
 }

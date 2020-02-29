@@ -14,7 +14,6 @@ public class Server extends Task<Integer> {
 	private static int nPlayers;
 	private static ArrayList<Connection> playersArray = new ArrayList<Connection>();
 
-	private static ArrayList<Connection> connectionsArray = new ArrayList<Connection>();
 	private static String players = "", playersState = "";
 
 	private ClientModel model;
@@ -27,7 +26,6 @@ public class Server extends Task<Integer> {
 
 	private static int Puerto;
 	static int numCliente = 0;
-	private ArrayList<Integer> disconectedList = new ArrayList<Integer>();
 
 	/**
 	 * Constructor del servidor que recibe como parámetro el modelo del cliente para
@@ -54,7 +52,7 @@ public class Server extends Task<Integer> {
 
 			System.out.println("Escucho el puerto " + Puerto);
 
-			while (numCliente < getnPlayers()) {
+			while (numCliente < 2) {
 
 				Socket skCliente = skServidor.accept();
 
@@ -64,7 +62,6 @@ public class Server extends Task<Integer> {
 				playersArray.add(new Connection(skCliente, ++numCliente, playersArray));
 			}
 
-			connectionsArray.addAll(playersArray);
 			for (Connection con : playersArray) {
 				con.start();
 			}
@@ -77,20 +74,22 @@ public class Server extends Task<Integer> {
 
 			players.concat("\n");
 			Connection.barrera.await();
-
+		
 			Connection.barrera.await();
-
+			
 			while (playersArray.size() != 1) {
 
 				playersState = "";
 				for (Connection con : playersArray) {
-					// if(con.getIdentity()!=this.identity)
+				
 
 					try {
+						System.out.println("asdfdsklfhadsklfhadsgfd");
 						con.recive();
 						playersState += con.getItemStateString();
-					} catch (NoSuchElementException e) {
 						
+					} catch (NoSuchElementException e) {
+						System.out.println("dsfdsfsfadsfdsfasf");
 					}
 
 				}
@@ -100,7 +99,6 @@ public class Server extends Task<Integer> {
 				playersState += "\n";
 				for (Connection con : playersArray) {
 					try {
-					
 						con.send(playersState);
 					} catch (Exception e) {
 					}
@@ -108,15 +106,9 @@ public class Server extends Task<Integer> {
 				}
 
 			}
-			for (Connection con : connectionsArray) {
-				if (con.isAlive())
-					con.getSocket().close();
-				con.interrupt();
-
-			}
-			// Guarda la fecha de finalizacion
-
-			// Guarda el ganador
+			System.out.println("cacac");
+		
+		
 			
 			
 			skServidor.close();
@@ -129,8 +121,5 @@ public class Server extends Task<Integer> {
 		return 0;
 	}
 
-	public static int getnPlayers() {
-		return nPlayers;
-	}
 
 }
