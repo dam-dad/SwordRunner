@@ -84,12 +84,11 @@ public class Server extends Task<Integer> {
 				
 
 					try {
-						System.out.println("asdfdsklfhadsklfhadsgfd");
 						con.recive();
 						playersState += con.getItemStateString();
 						
-					} catch (NoSuchElementException e) {
-						System.out.println("dsfdsfsfadsfdsfasf");
+					} catch (Exception e) {
+						System.out.println("No recibe datos szadsdaskujfhdkiugahdsfuhdsgtfdtg");
 					}
 
 				}

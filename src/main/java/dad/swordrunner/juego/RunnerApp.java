@@ -9,6 +9,7 @@ import com.almasb.fxgl.entity.level.tiled.TMXLevelLoader;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.PhysicsComponent;
 
+import dad.swordrunner.ClientModel;
 import dad.swordrunner.ComoJugarController;
 import dad.swordrunner.LocalController;
 import dad.swordrunner.MenuController;
@@ -26,6 +27,8 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class RunnerApp extends GameApplication {
 	
+	
+	
 	@Override
 	protected void initSettings(GameSettings settings) {
 		settings.setWidth(8500);
@@ -34,6 +37,8 @@ public class RunnerApp extends GameApplication {
 		settings.setFullScreenFromStart(true);
 	}
 
+	private ClientModel model;
+	
 	private Entity player;
 //	private static boolean iniciar;
 
@@ -43,11 +48,13 @@ public class RunnerApp extends GameApplication {
 			@Override
 			protected void onAction() {
 				player.getComponent(PlayerComponent.class).left();
+				model.setA(true);
 			}
 
 			@Override
 			protected void onActionEnd() {
 				player.getComponent(PlayerComponent.class).stop();
+				model.setA(false);
 			}
 		}, KeyCode.A);
 

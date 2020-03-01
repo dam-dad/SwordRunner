@@ -23,9 +23,8 @@ public class ClientGameThread extends Thread {
 
 		while (model.isEnPartida()) {
 			try {
-
 				sendPlayerPosition();
-				
+
 				System.out.println(desempaquetarPosiciones(model.getScanner().nextLine()));
 				indexError = 0;
 			} catch (Exception e) {
@@ -60,8 +59,8 @@ public class ClientGameThread extends Thread {
 			aux += model.getInputArray()[i] + ",";
 		}
 		aux += model.getInputArray()[i];
-		System.out.println(aux + "\n");
-		model.getFlujoSalida().write(aux);
+	
+		model.getFlujoSalida().write(aux+"\n");
 		model.getFlujoSalida().flush();
 
 	}

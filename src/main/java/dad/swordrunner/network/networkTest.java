@@ -36,8 +36,8 @@ public class networkTest extends Application {
 		serverThread = new Thread(server);
 		clientConnectionTask = new ClientConnectionTask(model);
 		clienttask2 = new ClientConnectionTask(model2);
-		clienttask2.setOnSucceeded(e -> startGame(gamethread, model));
-		clientConnectionTask.setOnSucceeded(e -> startGame(gamethread2, model2));
+		clienttask2.setOnSucceeded(e -> startGame(gamethread, clienttask2.getModel()));
+		clientConnectionTask.setOnSucceeded(e -> startGame(gamethread2, clientConnectionTask.getModel()));
 		clientConnectionThread = new Thread(clientConnectionTask);
 		clientthread2 = new Thread(clienttask2);
 
