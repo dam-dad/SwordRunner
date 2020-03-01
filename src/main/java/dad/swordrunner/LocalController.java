@@ -1,7 +1,15 @@
 package dad.swordrunner;
 
+import static com.almasb.fxgl.dsl.FXGL.getGameScene;
+import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
+import static com.almasb.fxgl.dsl.FXGL.set;
+
 import java.io.IOException;
 
+import com.almasb.fxgl.dsl.FXGL;
+
+import dad.swordrunner.juego.GameFactory;
+import dad.swordrunner.juego.RunnerApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,9 +70,24 @@ public class LocalController {
     
     @FXML
     void onListoAction(ActionEvent event) {
-//    	boolean buton= true;
+    	
+			getGameScene().removeGameView(RunnerApp.getView());
+			
+			getGameWorld().addEntityFactory(new GameFactory());
+
+			RunnerApp.player = null;
+
+			FXGL.setLevelFromMap("escenario.tmx");
+
+			RunnerApp.player = getGameWorld().spawn("player", 100, 0);
+
+			set("player", RunnerApp.player);
+
+//    	
+//    	RunnerApp.setIniciar(true);
+//    	RunnerApp.botonPulsado();
 //    	RunnerApp.botonPulsado(buton);
-    	swordRunner.getPrimaryStage().close();
+//    	swordRunner.getPrimaryStage().close();
     	
     	
     }
