@@ -7,14 +7,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane fx:id="root" prefHeight="480.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="480.0" prefWidth="770.0">
+      <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0">
          <children>
             <HBox maxHeight="100.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="volverButton" mnemonicParsing="false" onAction="#onVolverAction" text="Volver" />
+                  <Button fx:id="volverButton" mnemonicParsing="false" onAction="#onVolverAction" text="Volver">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                </children>
                <VBox.margin>
                   <Insets />
@@ -23,25 +27,17 @@
                   <Insets bottom="70.0" left="20.0" top="20.0" />
                </padding>
             </HBox>
-            <Label fx:id="ipLabel" text="Introduzca su IP" />
-            <TextField fx:id="ipTextField" alignment="CENTER" maxWidth="200.0" promptText="Por ejemplo: 10.2.3.2">
-               <VBox.margin>
-                  <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </TextField>
-            <Label fx:id="puertoLabel" text="Indique el puerto por el que conectarse" />
-            <TextField fx:id="puertoTextField" alignment="CENTER" maxWidth="200.0" promptText="Por ejemplo: 5555">
-               <VBox.margin>
-                  <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </TextField>
-            <Label fx:id="nickLabel" text="Introduzca un nick con el que jugar" />
-            <TextField fx:id="nickTextField" alignment="CENTER" maxWidth="200.0" promptText="Max 12 caracteres">
-               <VBox.margin>
-                  <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </TextField>
-            <Button fx:id="confirmarButton" defaultButton="true" mnemonicParsing="false" onAction="#onConfirmarAction" text="Confirmar" />
+            <VBox alignment="CENTER">
+               <children>
+                  <Label fx:id="ipLabel" text="Introduzca su IP" />
+                  <TextField fx:id="ipTextField" alignment="CENTER" maxWidth="200.0" promptText="Por ejemplo: 10.2.3.2" />
+                  <Label fx:id="puertoLabel" text="Indique el puerto por el que conectarse" />
+                  <TextField fx:id="puertoTextField" alignment="CENTER" maxWidth="200.0" promptText="Por ejemplo: 5555" />
+                  <Label fx:id="nickLabel" text="Introduzca un nick con el que jugar" />
+                  <TextField fx:id="nickTextField" alignment="CENTER" maxWidth="200.0" promptText="Max 12 caracteres" />
+                  <Button fx:id="confirmarButton" defaultButton="true" mnemonicParsing="false" onAction="#onConfirmarAction" text="Confirmar" />
+               </children>
+            </VBox>
          </children>
       </VBox>
    </children>

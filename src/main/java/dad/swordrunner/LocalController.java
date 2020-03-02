@@ -19,83 +19,82 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class LocalController {
-	
+
 	SwordRunnerApp swordRunner;
-	
-	//controllers
-	
+
+	// controllers
+
 	private PortadaController portadaController;
-	
-	//view
+
+	// view
 	@FXML
-    private Pane root;
+	private Pane root;
 
-    @FXML
-    private Button volverButton;
-    
-    @FXML
-    private ImageView jugador1ImageView= new ImageView();
-    Image imageJ1 = new Image("/images/Jugador1.png");
-    
-    @FXML
-    private ImageView jugador2ImageView= new ImageView();
-    Image imageJ2 = new Image("/images/Jugador2.png");
-    
-    @FXML
-    private Button listoButton;
+	@FXML
+	private Button volverButton;
 
-    @FXML
-    void onVolverAction(ActionEvent event) {
-    	portadaController.irAMenu();
-    }
-    
-    /**
-     * Se encarga de cargar la vista del fxml Local.fxml
-     * @param portadaController
-     * @throws IOException
-     */
-    public LocalController(PortadaController portadaController) throws IOException {
-    	this.portadaController = portadaController;
+	@FXML
+	private ImageView jugador1ImageView = new ImageView();
+	Image imageJ1 = new Image("/images/Jugador1.png");
+
+	@FXML
+	private ImageView jugador2ImageView = new ImageView();
+	Image imageJ2 = new Image("/images/Jugador2.png");
+
+	@FXML
+	private Button listoButton;
+
+	@FXML
+	void onVolverAction(ActionEvent event) {
+		portadaController.irAMenu();
+	}
+
+	/**
+	 * Se encarga de cargar la vista del fxml Local.fxml
+	 * 
+	 * @param portadaController
+	 * @throws IOException
+	 */
+	public LocalController(PortadaController portadaController) throws IOException {
+		this.portadaController = portadaController;
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Local.fxml"));
 		loader.setController(this);
 		loader.load();
-		
+
 		jugador1ImageView.setImage(imageJ1);
 		jugador1ImageView.setFitWidth(250);
 		jugador1ImageView.setFitHeight(250);
-		
+
 		jugador2ImageView.setImage(imageJ2);
 		jugador2ImageView.setFitWidth(250);
 		jugador2ImageView.setFitHeight(250);
-		
-		
-		
+
 	}
-    
-    @FXML
-    void onListoAction(ActionEvent event) {
-    	
-			getGameScene().removeGameView(RunnerApp.getView());
-			
-			getGameWorld().addEntityFactory(new GameFactory());
+	/**
+	 * Listener que cierra la vista del menú y lanza el juego
+	 * @param event
+	 */
 
-			RunnerApp.player = null;
+	@FXML
+	void onListoAction(ActionEvent event) {
 
-			FXGL.setLevelFromMap("escenario.tmx");
+		getGameScene().removeGameView(RunnerApp.getView());
 
-			RunnerApp.player = getGameWorld().spawn("player", 100, 0);
+		getGameWorld().addEntityFactory(new GameFactory());
 
-			set("player", RunnerApp.player);
+		RunnerApp.player = null;
 
-//    	
-//    	RunnerApp.setIniciar(true);
-//    	RunnerApp.botonPulsado();
-//    	RunnerApp.botonPulsado(buton);
-//    	swordRunner.getPrimaryStage().close();
-    	
-    	
-    }
+		FXGL.setLevelFromMap("escenario.tmx");
+
+		RunnerApp.player = getGameWorld().spawn("player", 50, 15);
+
+		set("player", RunnerApp.player);
+
+		getGameScene().getViewport().bindToEntity(RunnerApp.player, RunnerApp.player.getWidth() + 650,
+				RunnerApp.player.getHeight() + 550);
+
+	}
 
 	public Pane getView() {
 		return root;

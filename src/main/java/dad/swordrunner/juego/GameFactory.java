@@ -21,7 +21,11 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class GameFactory implements EntityFactory {
 
-
+	/**Inicializa cada componente del archivo .tmx con el tipo "platform" y le aplica las propiedades declaradas
+	 * 
+	 * @param data
+	 * @return propiedades
+	 */
     @Spawns("platform")
     public Entity newPlatform(SpawnData data) {
         return entityBuilder()
@@ -32,6 +36,9 @@ public class GameFactory implements EntityFactory {
                 .build();
     }
 
+    /**Se aplican las propiedades especificadas para las entidades de tipo "player"
+	 *
+	 */
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();
@@ -52,6 +59,12 @@ public class GameFactory implements EntityFactory {
                 .build();
     }
     
+    /**Se crea la hitbox del componente "exitTrigger" con el tamaño especificado a través del archivo .tmx
+     * 
+     * @param data
+     * @return propiedades
+     */
+    
     @Spawns("exitTrigger")
     public Entity newExitTrigger(SpawnData data) {
         return entityBuilder()
@@ -61,6 +74,12 @@ public class GameFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .build();
     }
+    
+    /**Se crea la hitbox del componente "exitSign" con el tamaño especificado a través del archivo .tmx
+     * 
+     * @param data
+     * @return propiedades
+     */
     
     @Spawns("exitSign")
     public Entity newExit(SpawnData data) {
@@ -72,6 +91,12 @@ public class GameFactory implements EntityFactory {
                 .build();
     }
     
+    /**Se añade el tipo "doorTop" a GameType
+     * 
+     * @param data
+     * @return propiedades
+     */
+    
     @Spawns("doorTop")
     public Entity newDoorTop(SpawnData data) {
         return entityBuilder()
@@ -80,6 +105,12 @@ public class GameFactory implements EntityFactory {
                 .opacity(0)
                 .build();
     }
+    
+    /**Se crea la hitbox del componente "doorBot" con el tamaño especificado a través del archivo .tmx
+     * 
+     * @param data
+     * @return propiedades
+     */
 
     @Spawns("doorBot")
     public Entity newDoorBot(SpawnData data) {

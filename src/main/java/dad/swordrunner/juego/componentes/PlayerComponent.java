@@ -20,8 +20,9 @@ public class PlayerComponent extends Component {
     private AnimationChannel animIdle, animWalk;
 
     private int jumps = 2;
-
-    private boolean isBeingDamaged = false;
+    
+    /**Se le asignan las texturas al componente "PlayerComponent"
+     */
 
     public PlayerComponent() {
 
@@ -35,6 +36,10 @@ public class PlayerComponent extends Component {
         texture.loop();
     }
 
+    /**Se crean las propiedades del componente "PlayerComponent"
+     * 
+     */
+    
     @Override
     public void onAdded() {
         entity.getTransformComponent().setScaleOrigin(new Point2D(16, 21));
@@ -47,6 +52,9 @@ public class PlayerComponent extends Component {
         });
     }
 
+    /**Se cambian las texturas dependiendo de la accion realizada por el componente "PlayerComponent
+     * "
+     */
     @Override
     public void onUpdate(double tpf) {
         if (isMoving()) {
@@ -60,37 +68,41 @@ public class PlayerComponent extends Component {
         }
     }
 
+    /**Se comprueba si el componente "PlayerComponent" se esta moviendo en el eje x
+     * 
+     * @return boolean
+     */
     private boolean isMoving() {
         return physics.isMovingX();
     }
 
+    /**Se desplaza en el eje x negativamente
+     * 
+     */
     public void left() {
-        if (isBeingDamaged)
-            return;
-
         getEntity().setScaleX(-1);
         physics.setVelocityX(-220);
     }
 
+    /**Se desplaza en el eje x positivamente
+     * 
+     */
     public void right() {
-        if (isBeingDamaged)
-            return;
-
         getEntity().setScaleX(1);
         physics.setVelocityX(220);
     }
 
+    /**Se queda inmóvil
+     * 
+     */
     public void stop() {
-        if (isBeingDamaged)
-            return;
-
         physics.setVelocityX(0);
     }
 
+    /**Se desplaza en el eje y de forma ascendente
+     * 
+     */
     public void jump() {
-        if (isBeingDamaged)
-            return;
-
         if (jumps == 0)
             return;
 
@@ -100,6 +112,7 @@ public class PlayerComponent extends Component {
         jumps--;
     }
 
+    //Permite desplazarse en el eje y de forma ascendente
     public void superJump() {
         physics.setVelocityY(-930);
     }

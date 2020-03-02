@@ -24,23 +24,17 @@ public class RunnerApp extends GameApplication {
 
 	@Override
 	protected void initSettings(GameSettings settings) {
-		settings.setWidth(8500);
-		settings.setHeight(4000);
+		settings.setWidth(2000);
+		settings.setHeight(1000);
 		settings.setFullScreenAllowed(true);
 		settings.setFullScreenFromStart(true);
 	}
-	
 
 	public static Entity player;
-	public static boolean iniciar = false;
 	public static GameView view;
 
 	public static GameView getView() {
 		return view;
-	}
-
-	public static void setIniciar(boolean iniciar) {
-		RunnerApp.iniciar = iniciar;
 	}
 
 	@Override
@@ -81,16 +75,12 @@ public class RunnerApp extends GameApplication {
 	protected void initGameVars(Map<String, Object> vars) {
 
 	}
-	
-	public static void botonPulsado() {
-		iniciar = true;
-	}
 
 	@Override
 	protected void initGame() {
 
-		// levelEndScene = new LevelEndScene();
-		//Referencias a los controladores para  meter las vistas del menú en laventana del juego
+		// Referencias a los controladores para meter las vistas del menú en laventana
+		// del juego
 		PortadaController controller;
 		ComoJugarController comoController;
 		LocalController localController;
@@ -98,69 +88,36 @@ public class RunnerApp extends GameApplication {
 		MenuController menuController;
 		try {
 			controller = new PortadaController();
-//			controller.getView().setPrefWidth(770);
-//			controller.getView().setPrefHeight(480);
+			controller.getView().setPrefWidth(2000);
+			controller.getView().setPrefHeight(1000);
 			controller.getView().setCenterShape(true);
 			view = new GameView(controller.getView(), 0);
 			getGameScene().addGameView(view);
 
 			menuController = new MenuController(controller);
-//			menuController.getView().setPrefWidth(770);
-//			menuController.getView().setPrefHeight(480);
+			menuController.getView().setPrefWidth(3500);
+			menuController.getView().setPrefHeight(1000);
 			menuController.getView().setCenterShape(true);
 
 			comoController = new ComoJugarController(controller);
-//			comoController.getView().setPrefWidth(770);
-//			comoController.getView().setPrefHeight(480);
+			comoController.getView().setPrefWidth(2000);
+			comoController.getView().setPrefHeight(1000);
 			comoController.getView().setCenterShape(true);
 
 			localController = new LocalController(controller);
-//			localController.getView().setPrefWidth(750);
-//			localController.getView().setPrefHeight(480);
+			localController.getView().setPrefWidth(2000);
+			localController.getView().setPrefHeight(1000);
 			localController.getView().setCenterShape(true);
 
 			onlineController = new OnlineController(controller);
-//			onlineController.getView().setPrefWidth(750);
-//			onlineController.getView().setPrefHeight(480);
+			onlineController.getView().setPrefWidth(2000);
+			onlineController.getView().setPrefHeight(1000);
 			onlineController.getView().setCenterShape(true);
-
-			
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-//        System.out.println("0");
-//    	
-//        getGameWorld().addEntityFactory(new GameFactory());
-//
-//        player = null;
-//        
-//        System.out.println("1");
-//        
-//        FXGL.setLevelFromMap("mapa.tmx");
-//
-//        System.out.println("2");
-
-		// var levelFile = new File("mapa.tmx");
-		// Level level;
-//		try {
-//			level = new TMXLevelLoader().load(levelFile.toURI().toURL(), getGameWorld());
-//			FXGL.getGameWorld().setLevel(level);
-//		} catch (MalformedURLException e) {
-//
-//			e.printStackTrace();
-//		}
-
-//        System.out.println("4");
-//		
-//        player = getGameWorld().spawn("player", 0, 0);
-//
-//        System.out.println("5");
-//        
-//        set("player", player);
 	}
-
 
 	private void makeExitDoor() {
 		var doorTop = getGameWorld().getSingleton(GameType.DOOR_TOP);
@@ -200,21 +157,9 @@ public class RunnerApp extends GameApplication {
 				getGameScene().addGameView(view);
 				getGameWorld().removeEntity(player);
 				// Abrir la ventana principal del juego
-				// Abrir la ventana principal del juego
-				// Abrir la ventana principal del juego
-
-				// Introducir codigo aqui
-				// Introducir codigo aqui
-				// Introducir codigo aqui
-				// Introducir codigo aqui
-				// Introducir codigo aqui
-				// Introducir codigo aqui
 
 			});
-//	            levelEndScene.onLevelFinish();
 
-			// the above runs in its own scene, so fade will wait until
-			// the user exits that scene
 		});
 	}
 

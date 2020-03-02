@@ -6,29 +6,45 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane fx:id="root" prefHeight="480.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="480.0" prefWidth="770.0">
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="720.0" prefWidth="1280.0">
          <children>
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
-                  <Button fx:id="volverButton" mnemonicParsing="false" onAction="#onVolverAction" text="Volver" />
+                  <Button fx:id="volverButton" mnemonicParsing="false" onAction="#onVolverAction" prefHeight="68.0" prefWidth="186.0" text="Volver">
+                     <HBox.margin>
+                        <Insets left="50.0" top="50.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                </children>
                <padding>
                   <Insets bottom="20.0" left="20.0" top="20.0" />
                </padding>
             </HBox>
-            <HBox fx:id="imageHBox" alignment="BASELINE_CENTER" maxHeight="-Infinity" prefHeight="500.0" prefWidth="700.0">
+            <HBox fx:id="imageHBox" alignment="CENTER" prefHeight="500.0" prefWidth="1280.0">
                <children>
-                  <ImageView fx:id="jugador1ImageView" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="jugador2ImageView" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="jugador1ImageView" fitHeight="400.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin></ImageView>
+                  <ImageView fx:id="jugador2ImageView" fitHeight="400.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin></ImageView>
                </children>
                <padding>
                   <Insets bottom="20.0" />
                </padding>
             </HBox>
-            <Button fx:id="listoButton" mnemonicParsing="false" onAction="#onListoAction" text="Listo" />
+            <Button fx:id="listoButton" mnemonicParsing="false" onAction="#onListoAction" prefHeight="68.0" prefWidth="186.0" text="Listo">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
          </children>
       </VBox>
    </children>
