@@ -32,10 +32,19 @@ public class RunnerApp extends GameApplication {
 
 	public static Entity player;
 	public static GameView view;
+	public static boolean iniciar = false;
 
 	public static GameView getView() {
 		return view;
 	}
+	
+	public static void setIniciar(boolean iniciar) {
+		RunnerApp.iniciar = iniciar;
+	}
+	
+	/**Se asigna la función de cada input (a cada tecla)
+	 * 
+	 */
 
 	@Override
 	protected void initInput() {
@@ -75,9 +84,19 @@ public class RunnerApp extends GameApplication {
 	protected void initGameVars(Map<String, Object> vars) {
 
 	}
+	
+	public static void botonPulsado() {
+		iniciar = true;
+	}
+
+	/**Se inicializan las vistas del menu
+	 * 
+	 */
 
 	@Override
 	protected void initGame() {
+		
+		// levelEndScene = new LevelEndScene();
 
 		// Referencias a los controladores para meter las vistas del menú en laventana
 		// del juego
@@ -113,12 +132,17 @@ public class RunnerApp extends GameApplication {
 			onlineController.getView().setPrefWidth(2000);
 			onlineController.getView().setPrefHeight(1000);
 			onlineController.getView().setCenterShape(true);
+			
+			//getGameScene().removeGameView(view);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+	/**Se localiza el lugar en el que el jugador colisionar� con la puerta de salida
+	 * 
+	 */
 	private void makeExitDoor() {
 		var doorTop = getGameWorld().getSingleton(GameType.DOOR_TOP);
 		var doorBot = getGameWorld().getSingleton(GameType.DOOR_BOT);
@@ -128,6 +152,9 @@ public class RunnerApp extends GameApplication {
 		doorTop.getViewComponent().setOpacity(1);
 		doorBot.getViewComponent().setOpacity(1);
 	}
+	/**Se crean las colisiones y los componentes relacionados con las f�sicas
+	 * 
+	 */
 
 	@Override
 	protected void initPhysics() {
@@ -153,10 +180,7 @@ public class RunnerApp extends GameApplication {
 			getDisplay().showMessageBox("Se acabó el juego!", () -> {
 
 				// Cierra el juego.
-
-				getGameScene().addGameView(view);
-				getGameWorld().removeEntity(player);
-				// Abrir la ventana principal del juego
+				getGameController().exit();
 
 			});
 
