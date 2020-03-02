@@ -6,9 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 public class MenuController {
 	
@@ -26,6 +24,12 @@ public class MenuController {
 	@FXML
 	private Button jugarButton;
 
+	
+	/**
+	 * Carga la vista fxml del Menu.fxml
+	 * @param portadaController
+	 * @throws IOException
+	 */
 	public MenuController(PortadaController portadaController) throws IOException {
 		this.portadaController = portadaController;
 		

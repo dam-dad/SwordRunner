@@ -49,6 +49,11 @@ public class LocalController {
     	portadaController.irAMenu();
     }
     
+    /**
+     * Se encarga de cargar la vista del fxml Local.fxml
+     * @param portadaController
+     * @throws IOException
+     */
     public LocalController(PortadaController portadaController) throws IOException {
     	this.portadaController = portadaController;
 

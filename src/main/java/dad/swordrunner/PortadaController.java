@@ -15,6 +15,8 @@ import javafx.scene.layout.BorderPane;
 public class PortadaController implements Initializable {
 
 	// controllers
+	 //Referencias al resto de controladores, para tenerlos como referencia y así cambiar 
+	 
 	private MenuController menuController;
 	private OnlineController onlineController;
 	private LocalController localController;

@@ -57,6 +57,11 @@ public class ComoJugarController {
     @FXML
     private Label instruccion5Label;
     
+    /**
+     * Se encarga de cargar la vista del fxml ComoJugar.fxml
+     * @param portadaController
+     * @throws IOException
+     */
     public ComoJugarController(PortadaController portadaController) throws IOException {
 		this.portadaController = portadaController;
 		
@@ -64,7 +69,10 @@ public class ComoJugarController {
 		loader.setController(this);
 		loader.load();
 	}
-
+    /**
+     * Botón simle para volver al menú anterior
+     * @param event
+     */
     @FXML
     void onVolverAction(ActionEvent event) {
     	portadaController.irAMenu();

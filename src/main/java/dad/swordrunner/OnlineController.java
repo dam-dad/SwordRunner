@@ -65,7 +65,12 @@ public class OnlineController {
 		portadaController.irAMenu();
 	}
 	
-
+	/**
+	 * Botón que comprueba si la información introducida concuerda con los parámetros necesarios. En caso de que no concuere,
+	 * se mostrarán ventanas acorde a los errores.
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void onConfirmarAction(ActionEvent event) throws IOException {
 		StringProperty ipDatos = ipTextField.textProperty();

@@ -24,8 +24,8 @@ public class RunnerApp extends GameApplication {
 
 	@Override
 	protected void initSettings(GameSettings settings) {
-//		settings.setWidth(8500);
-//		settings.setHeight(4000);
+		settings.setWidth(8500);
+		settings.setHeight(4000);
 		settings.setFullScreenAllowed(true);
 		settings.setFullScreenFromStart(true);
 	}
@@ -90,7 +90,7 @@ public class RunnerApp extends GameApplication {
 	protected void initGame() {
 
 		// levelEndScene = new LevelEndScene();
-
+		//Referencias a los controladores para  meter las vistas del menú en laventana del juego
 		PortadaController controller;
 		ComoJugarController comoController;
 		LocalController localController;
@@ -123,10 +123,7 @@ public class RunnerApp extends GameApplication {
 //			onlineController.getView().setPrefWidth(750);
 //			onlineController.getView().setPrefHeight(480);
 			onlineController.getView().setCenterShape(true);
-			
-			//getGameScene().removeGameView(view);
 
-			//no está entrando en el bucle, por eso no quita la GameView
 			
 
 		} catch (IOException e) {
@@ -199,8 +196,9 @@ public class RunnerApp extends GameApplication {
 			getDisplay().showMessageBox("Se acabó el juego!", () -> {
 
 				// Cierra el juego.
-				getGameController().exit();
 
+				getGameScene().addGameView(view);
+				getGameWorld().removeEntity(player);
 				// Abrir la ventana principal del juego
 				// Abrir la ventana principal del juego
 				// Abrir la ventana principal del juego
