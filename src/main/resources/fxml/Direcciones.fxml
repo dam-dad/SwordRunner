@@ -11,7 +11,7 @@
 
 <Pane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0">
+      <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="2000.0">
          <children>
             <HBox maxHeight="100.0" VBox.vgrow="ALWAYS">
                <children>
@@ -27,16 +27,40 @@
                   <Insets bottom="70.0" left="20.0" top="20.0" />
                </padding>
             </HBox>
-            <VBox alignment="CENTER">
+            <VBox alignment="TOP_CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label fx:id="ipLabel" text="Introduzca su IP" />
-                  <TextField fx:id="ipTextField" alignment="CENTER" maxWidth="200.0" promptText="Por ejemplo: 10.2.3.2" />
-                  <Label fx:id="puertoLabel" text="Indique el puerto por el que conectarse" />
-                  <TextField fx:id="puertoTextField" alignment="CENTER" maxWidth="200.0" promptText="Por ejemplo: 5555" />
-                  <Label fx:id="nickLabel" text="Introduzca un nick con el que jugar" />
-                  <TextField fx:id="nickTextField" alignment="CENTER" maxWidth="200.0" promptText="Max 12 caracteres" />
-                  <Button fx:id="confirmarButton" defaultButton="true" mnemonicParsing="false" onAction="#onConfirmarAction" text="Confirmar" />
+                  <Label fx:id="ipLabel" text="Introduzca su IP">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <TextField fx:id="ipTextField" alignment="CENTER" maxWidth="200.0" promptText="Por ejemplo: 10.2.3.2">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+                  <Label fx:id="puertoLabel" text="Indique el puerto por el que conectarse">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <TextField fx:id="puertoTextField" alignment="CENTER" maxWidth="200.0" promptText="Por ejemplo: 5555">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+                  <Label fx:id="nickLabel" text="Introduzca un nick con el que jugar">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <TextField fx:id="nickTextField" alignment="CENTER" maxWidth="200.0" promptText="Max 12 caracteres">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+                  <Button fx:id="confirmarButton" defaultButton="true" mnemonicParsing="false" onAction="#onConfirmarAction" text="Confirmar">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                </children>
+               <padding>
+                  <Insets top="100.0" />
+               </padding>
             </VBox>
          </children>
       </VBox>
