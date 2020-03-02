@@ -33,23 +33,23 @@ public class RunnerApp extends GameApplication {
 		settings.setFullScreenAllowed(true);
 		settings.setFullScreenFromStart(true);
 	}
+	
 
 	public static Entity player;
-	public static GameView view;
 	public static boolean iniciar = false;
+	public static GameView view;
 
 	public static GameView getView() {
 		return view;
 	}
-	
+
 	public static void setIniciar(boolean iniciar) {
 		RunnerApp.iniciar = iniciar;
 	}
-	
-	/**Se asigna la función de cada input (a cada tecla)
+
+	/**Se asigna la funci�n de cada input (a cada tecla)
 	 * 
 	 */
-
 	@Override
 	protected void initInput() {
 		getInput().addAction(new UserAction("Left") {
@@ -96,14 +96,11 @@ public class RunnerApp extends GameApplication {
 	/**Se inicializan las vistas del menu
 	 * 
 	 */
-
 	@Override
 	protected void initGame() {
-		
+
 		// levelEndScene = new LevelEndScene();
 
-		// Referencias a los controladores para meter las vistas del menú en laventana
-		// del juego
 		PortadaController controller;
 		ComoJugarController comoController;
 		LocalController localController;
@@ -118,7 +115,7 @@ public class RunnerApp extends GameApplication {
 			getGameScene().addGameView(view);
 
 			menuController = new MenuController(controller);
-			menuController.getView().setPrefWidth(3500);
+			menuController.getView().setPrefWidth(2000);
 			menuController.getView().setPrefHeight(1000);
 			menuController.getView().setCenterShape(true);
 
@@ -126,7 +123,7 @@ public class RunnerApp extends GameApplication {
 			comoController.getView().setPrefWidth(2000);
 			comoController.getView().setPrefHeight(1000);
 			comoController.getView().setCenterShape(true);
-
+			
 			localController = new LocalController(controller);
 			localController.getView().setPrefWidth(2000);
 			localController.getView().setPrefHeight(1000);
@@ -156,10 +153,10 @@ public class RunnerApp extends GameApplication {
 		doorTop.getViewComponent().setOpacity(1);
 		doorBot.getViewComponent().setOpacity(1);
 	}
+
 	/**Se crean las colisiones y los componentes relacionados con las f�sicas
 	 * 
 	 */
-
 	@Override
 	protected void initPhysics() {
 		getPhysicsWorld().setGravity(0, 760);
@@ -185,9 +182,8 @@ public class RunnerApp extends GameApplication {
 
 				// Cierra el juego.
 				getGameController().exit();
-
+				
 			});
-
 		});
 	}
 
