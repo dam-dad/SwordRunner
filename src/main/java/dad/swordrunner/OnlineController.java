@@ -66,7 +66,7 @@ public class OnlineController {
 	}
 	
 	/**
-	 * Botón que comprueba si la información introducida concuerda con los parámetros necesarios. En caso de que no concuere,
+	 * Botón que comprueba si la información introducida concuerda con los parámetros necesarios. En caso de que no concuerde,
 	 * se mostrarán ventanas acorde a los errores.
 	 * @param event
 	 * @throws IOException
