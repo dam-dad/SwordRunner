@@ -22,8 +22,12 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class RunnerApp extends GameApplication {
 
+	/**Propiedades de la Stage en la que se ejecutará el juego
+	 * 
+	 */
 	@Override
 	protected void initSettings(GameSettings settings) {
+		//settings.setManualResizeEnabled(true);
 		settings.setWidth(2000);
 		settings.setHeight(1000);
 		settings.setFullScreenAllowed(true);
